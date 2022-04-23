@@ -1,0 +1,10 @@
+;; deps.edn
+{:paths ["src/main"]
+ :deps {org.clojure/clojure {:mvn/version "1.10.3"}
+        com.walmartlabs/lacinia {:mvn/version "1.2-alpha-1"}
+        org.clojure/data.json {:mvn/version "2.4.0"}}
+ :aliases
+ {;; src/dev 의 모든 파일을 읽는 알리아스.
+  :dev {:extra-paths ["src/dev"]}
+  ;; localhost:7777 에서 REPL을 시작하게 하는 알리아스.
+  :repl {:jvm-opts ["-Dclojure.server.repl={:port 7777 :accept clojure.core.server/repl}"]}}}
