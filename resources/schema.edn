@@ -1,0 +1,28 @@
+{:objects
+ {:Book {:description "George R. R. Martin이 저술한 책들"
+         :fields      {:Id            {:type        Int
+                                       :description "책의 ID"}
+                       :Name          {:type        String
+                                       :description "책의 이름"}
+                       :ISBN          {:type        String
+                                       :description "ISBN Number"}
+                       :NumberOfPages {:type        String
+                                       :description "책의 페이지 숫자"}
+                       :Publisher     {:type        String
+                                       :description "출판사 이름"}
+                       :MediaType     {:type        String
+                                       :description "미디어의 타입"}
+                       :Country       {:type        String
+                                       :description "책이 처음으로 출간된 국가"}
+                       :ReleaseDate   {:type        String
+                                       :description "책이 출간된 년도"}
+                       :Authros       {:type        (list String)
+                                       :description "책의 저자들"}
+                       :FollowedBy    {:type        Int
+                                       :description "다음 권의 ID"}
+                       :PrecededById  {:type        Int
+                                       :description "이전 권의 ID"}}}}
+ :queries {:book_by_id
+           {:type    :Book
+            :args    {:id {:type Int}}
+            :resolve :query/book-by-id}}}
