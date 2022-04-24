@@ -21,8 +21,26 @@
                        :FollowedBy    {:type        Int
                                        :description "다음 권의 ID"}
                        :PrecededById  {:type        Int
-                                       :description "이전 권의 ID"}}}}
- :queries {:book_by_id
-           {:type    :Book
-            :args    {:id {:type Int}}
-            :resolve :query/book-by-id}}}
+                                       :description "이전 권의 ID"}}}
+  :House {:description "Game of thrones에 등장하는 가문들"
+          :fields      {:Id   {:type        Int
+                               :description "가문의 ID"}
+                        :Name {:type        String
+                               :description "가문의 이름"}}}
+  :Character {:description "Game of thrones의 등장인물들"
+              :fields      {:Id          {:type        Int
+                                          :description "등장인물의 ID"}
+                            :Name        {:type        String
+                                          :description "등장인물의 이름"}
+                            :Allegiances {:type        (list :House)
+                                          :description "충성관계의 가문들"
+                                          :resolve     :Character/Allegiances}
+                            :Books       {:type        (list :Books)
+                                          :description "등장하는 책"
+                                          :resolve     :Character/Books}}}}
+ :queries {:book_by_id      {:type :Book
+                             :args    {:id {:type Int}}
+                             :resolve :query/book-by-id}
+           :character_by_id {:type    :Character
+                             :args    {:id {:type Int}}
+                             :resolve :query/character-by-id}}}
